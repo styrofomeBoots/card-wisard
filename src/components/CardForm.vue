@@ -10,9 +10,9 @@ import { CardData } from "../types/cardWisard.types.ts";
 const props = defineProps({
   canRemove: { type: Boolean, required: true },
   cardIndex: { type: Number, required: true },
-  lastUph: { type: Number, required: true },
-  lastAph: { type: Number, required: true },
-  lastLoi: { type: Number, required: true },
+  lastTbt: { type: [Number, null], required: true },
+  lastAph: { type: [Number, null], required: true },
+  lastLoi: { type: [Number, null], required: true },
 });
 const emit = defineEmits(["remove"]);
 const model = defineModel<CardData>();
@@ -45,7 +45,7 @@ const removeSection = (index: number): void => {
 };
 
 const useLastKpis = (): void => {
-  model.value!.uph = props.lastUph;
+  model.value!.tbt = props.lastTbt;
   model.value!.aph = props.lastAph;
   model.value!.loi = props.lastLoi;
 };
@@ -120,11 +120,11 @@ const useLastKpis = (): void => {
     <div id="kpiRow" class="flex items-end gap-2 *:flex-grow">
       <label class="form-control min-w-0">
         <div class="label">
-          <span class="label-text">UPH</span>
+          <span class="label-text">TBT</span>
         </div>
         <input
-          :id="`uph-${cardIndex}`"
-          v-model="model!.uph"
+          :id="`tbt-${cardIndex}`"
+          v-model="model!.tbt"
           type="number"
           class="input input-bordered min-w-0"
         />

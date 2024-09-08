@@ -46,7 +46,7 @@ export const usePdf = (): { createPdf: (cards: CardData[]) => void } => {
       doc.setFontSize(18);
       textX = startX + col * cellWidth + 4;
       textY = startY + row * cellHeight + 17;
-      const kpis = `UPH: ${cards[itemIndex].uph}  APH: ${cards[itemIndex].aph}`;
+      const kpis = `TBT: ${cards[itemIndex].tbt}  APH: ${cards[itemIndex].aph}`;
       doc.text(kpis, textX, textY);
 
       textY = startY + row * cellHeight + 24;

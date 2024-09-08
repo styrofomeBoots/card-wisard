@@ -10,23 +10,23 @@ const cards = ref<CardData[]>([
   {
     name: "",
     breakTime: "",
-    uph: 0,
-    aph: 0,
-    loi: 0,
+    tbt: null,
+    aph: null,
+    loi: null,
     sections: [""],
   },
 ]);
 
-const lastUph = ref(0);
-const lastAph = ref(0);
-const lastLoi = ref(0);
+const lastTbt = ref<number | null>(null);
+const lastAph = ref<number | null>(null);
+const lastLoi = ref<number | null>(null);
 
 watch(
   cards,
   () => {
-    lastUph.value = cards.value.at(-1)?.uph ?? lastUph.value;
-    lastAph.value = cards.value.at(-1)?.aph ?? lastAph.value;
-    lastLoi.value = cards.value.at(-1)?.loi ?? lastLoi.value;
+    lastTbt.value = cards.value.at(-2)?.tbt ?? lastTbt.value;
+    lastAph.value = cards.value.at(-2)?.aph ?? lastAph.value;
+    lastLoi.value = cards.value.at(-2)?.loi ?? lastLoi.value;
   },
   { deep: true }
 );
@@ -35,9 +35,9 @@ const addCard = (): void => {
   cards.value.push({
     name: "",
     breakTime: "",
-    uph: 0,
-    aph: 0,
-    loi: 0,
+    tbt: null,
+    aph: null,
+    loi: null,
     sections: [""],
   });
 };
@@ -54,7 +54,7 @@ const removeCard = (index: number): void => {
       v-model="cards[index]"
       :can-remove="cards.length > 1"
       :card-index="index"
-      :last-uph="lastUph"
+      :last-tbt="lastTbt"
       :last-aph="lastAph"
       :last-loi="lastLoi"
       @remove="removeCard(index)"

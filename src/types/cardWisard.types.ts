@@ -1,8 +1,8 @@
 export interface CardData {
   name: string;
   breakTime: string;
-  uph: number;
-  aph: number;
-  loi: number;
+  tbt: number | null;
+  aph: number | null;
+  loi: number | null;
   sections: string[];
 }
