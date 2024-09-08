@@ -52,14 +52,16 @@ const useLastKpis = (): void => {
 </script>
 
 <template>
-  <div class="flex max-w-[36rem] flex-col gap-1 rounded-lg border-2 p-2">
+  <div
+    class="flex min-w-36 max-w-[36rem] flex-col gap-1 rounded-lg border-[1px] p-2"
+  >
     <div class="flex justify-end">
       <button
-        class="btn btn-circle btn-error btn-sm"
+        class="btn btn-error btn-sm"
         :disabled="!props.canRemove"
         @click="emit('remove')"
       >
-        <XMarkIcon class="size-8" />
+        remove worker
       </button>
     </div>
     <div id="nameRow" class="flex gap-2">
@@ -71,7 +73,7 @@ const useLastKpis = (): void => {
           :id="`name-${cardIndex}`"
           v-model="model!.name"
           type="text"
-          class="input input-bordered"
+          class="input input-sm input-bordered"
           autocomplete="off"
         />
       </label>
@@ -84,31 +86,31 @@ const useLastKpis = (): void => {
             :id="`breakTime-${cardIndex}`"
             v-model="breakTime"
             type="string"
-            class="input input-bordered w-36"
+            class="input input-sm input-bordered w-36"
           />
         </label>
         <div class="flex flex-col justify-end">
-          <div class="form-control w-16">
+          <div class="form-control w-14">
             <label class="label cursor-pointer pb-0">
               <span class="label-text">AM</span>
               <input
                 v-model="timePeriod"
                 type="radio"
                 name="radio"
-                class="radio"
+                class="radio radio-xs"
                 value="AM"
                 :disabled="!breakTime"
               />
             </label>
           </div>
-          <div class="form-control w-16">
-            <label class="label cursor-pointer pb-0 pt-1">
+          <div class="form-control w-14">
+            <label class="label cursor-pointer pb-0 pt-[.1rem]">
               <span class="label-text">PM</span>
               <input
                 v-model="timePeriod"
                 type="radio"
                 name="radio"
-                class="radio"
+                class="radio radio-xs"
                 value="PM"
                 :disabled="!breakTime"
               />
@@ -126,7 +128,7 @@ const useLastKpis = (): void => {
           :id="`tbt-${cardIndex}`"
           v-model="model!.tbt"
           type="number"
-          class="input input-bordered min-w-0"
+          class="input input-sm input-bordered min-w-0"
         />
       </label>
       <label class="form-control min-w-0">
@@ -137,7 +139,7 @@ const useLastKpis = (): void => {
           :id="`aph-${cardIndex}`"
           v-model="model!.aph"
           type="number"
-          class="input input-bordered min-w-0"
+          class="input input-sm input-bordered min-w-0"
         />
       </label>
       <label class="form-control min-w-0">
@@ -148,11 +150,11 @@ const useLastKpis = (): void => {
           :id="`loi-${cardIndex}`"
           v-model="model!.loi"
           type="number"
-          class="input input-bordered min-w-0"
+          class="input input-sm input-bordered min-w-0"
         />
       </label>
-      <button class="btn btn-square btn-primary" @click="useLastKpis">
-        <ArrowPathRoundedSquareIcon class="size-8" />
+      <button class="btn btn-square btn-primary btn-sm" @click="useLastKpis">
+        <ArrowPathRoundedSquareIcon class="size-6" />
       </button>
     </div>
     <div id="sectionsRow" class="flex flex-col gap-2">
@@ -169,18 +171,18 @@ const useLastKpis = (): void => {
             :id="`name-${index}-${cardIndex}`"
             v-model="sections[index]"
             type="text"
-            class="input input-bordered"
+            class="input input-sm input-bordered"
           />
         </label>
-        <button class="btn btn-circle btn-success" @click="addSection(index)">
-          <PlusIcon class="size-8" />
+        <button class="btn btn-circle btn-success btn-sm" @click="addSection(index)">
+          <PlusIcon class="size-6" />
         </button>
         <button
-          class="btn btn-circle btn-error"
+          class="btn btn-circle btn-error btn-sm"
           :disabled="sections.length === 1"
           @click="removeSection(index)"
         >
-          <XMarkIcon class="size-8" />
+          <XMarkIcon class="size-6" />
         </button>
       </div>
     </div>

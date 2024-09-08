@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import { PlusIcon, DocumentIcon } from "@heroicons/vue/24/outline";
 import CardForm from "./components/CardForm.vue";
 import { usePdf } from "./composables/usePDF.ts";
 import { CardData } from "./types/cardWisard.types.ts";
@@ -60,12 +59,10 @@ const removeCard = (index: number): void => {
       @remove="removeCard(index)"
     />
     <div class="flex gap-2 self-end">
-      <button class="btn btn-circle btn-primary">
-        <DocumentIcon class="size-8" @click="createPdf(cards)" />
+      <button class="btn btn-primary btn-sm" @click="createPdf(cards)">
+        generate pdf
       </button>
-      <button class="btn btn-circle btn-success">
-        <PlusIcon class="size-8" @click="addCard" />
-      </button>
+      <button class="btn btn-success btn-sm" @click="addCard">add worker</button>
     </div>
   </div>
 </template>

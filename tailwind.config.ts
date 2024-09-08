@@ -8,6 +8,7 @@ export default {
   },
   plugins: [require("daisyui")],
   daisyui: {
+    themes: ["night"],
     logs: false,
   },
 } satisfies Config;
