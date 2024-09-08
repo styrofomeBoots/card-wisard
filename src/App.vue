@@ -10,9 +10,9 @@ const cards = ref<CardData[]>([
   {
     name: "",
     breakTime: "",
-    uph: null,
-    aph: null,
-    loi: null,
+    uph: 0,
+    aph: 0,
+    loi: 0,
     sections: [""],
   },
 ]);
@@ -24,9 +24,9 @@ const lastLoi = ref(0);
 watch(
   cards,
   () => {
-    lastUph.value = cards.value.at(-1).uph ?? lastUph.value;
-    lastAph.value = cards.value.at(-1).aph ?? lastAph.value;
-    lastLoi.value = cards.value.at(-1).loi ?? lastLoi.value;
+    lastUph.value = cards.value.at(-1)?.uph ?? lastUph.value;
+    lastAph.value = cards.value.at(-1)?.aph ?? lastAph.value;
+    lastLoi.value = cards.value.at(-1)?.loi ?? lastLoi.value;
   },
   { deep: true }
 );
@@ -35,9 +35,9 @@ const addCard = (): void => {
   cards.value.push({
     name: "",
     breakTime: "",
-    uph: null,
-    aph: null,
-    loi: null,
+    uph: 0,
+    aph: 0,
+    loi: 0,
     sections: [""],
   });
 };
@@ -49,7 +49,7 @@ const removeCard = (index: number): void => {
 <template>
   <div class="m-10 mx-auto flex w-fit flex-col gap-2">
     <CardForm
-      v-for="(card, index) in cards"
+      v-for="(_card, index) in cards"
       :key="`i=${index}`"
       v-model="cards[index]"
       :can-remove="cards.length > 1"

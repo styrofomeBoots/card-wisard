@@ -23,15 +23,16 @@ const sections = ref([""]);
 
 watch([breakTime, timePeriod], () => {
   if (!breakTime.value) {
-    return (model.value.breakTime = "");
+    model.value!.breakTime = "";
+    return;
   }
-  model.value.breakTime = `Break at: ${breakTime.value} ${timePeriod.value}`;
+  model.value!.breakTime = `Break at: ${breakTime.value} ${timePeriod.value}`;
 });
 
 watch(
   sections,
   () => {
-    model.value.sections = sections.value;
+    model.value!.sections = sections.value;
   },
   { deep: true }
 );
@@ -44,9 +45,9 @@ const removeSection = (index: number): void => {
 };
 
 const useLastKpis = (): void => {
-  model.value.uph = props.lastUph;
-  model.value.aph = props.lastAph;
-  model.value.loi = props.lastLoi;
+  model.value!.uph = props.lastUph;
+  model.value!.aph = props.lastAph;
+  model.value!.loi = props.lastLoi;
 };
 </script>
 
@@ -68,7 +69,7 @@ const useLastKpis = (): void => {
         </div>
         <input
           :id="`name-${cardIndex}`"
-          v-model="model.name"
+          v-model="model!.name"
           type="text"
           class="input input-bordered"
           autocomplete="off"
@@ -123,7 +124,7 @@ const useLastKpis = (): void => {
         </div>
         <input
           :id="`uph-${cardIndex}`"
-          v-model="model.uph"
+          v-model="model!.uph"
           type="number"
           class="input input-bordered min-w-0"
         />
@@ -134,7 +135,7 @@ const useLastKpis = (): void => {
         </div>
         <input
           :id="`aph-${cardIndex}`"
-          v-model="model.aph"
+          v-model="model!.aph"
           type="number"
           class="input input-bordered min-w-0"
         />
@@ -145,7 +146,7 @@ const useLastKpis = (): void => {
         </div>
         <input
           :id="`loi-${cardIndex}`"
-          v-model="model.loi"
+          v-model="model!.loi"
           type="number"
           class="input input-bordered min-w-0"
         />
@@ -156,7 +157,7 @@ const useLastKpis = (): void => {
     </div>
     <div id="sectionsRow" class="flex flex-col gap-2">
       <div
-        v-for="(section, index) in sections"
+        v-for="(_section, index) in sections"
         :key="`i-${index}`"
         class="flex items-end gap-2"
       >
